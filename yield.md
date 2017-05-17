@@ -1,5 +1,5 @@
 # Python-
-##迭代器 iterator 和生成器 constructor
+迭代器 iterator 和生成器 constructor
 一、迭代器iteraor
   在Python中，for循环可以用于Python中的任何类型，包括列表、元祖等等，实际上，for循环可用于任何“可迭代对象”，这其实就是迭代器
   for line in open("test.txt").readlines():
@@ -47,3 +47,19 @@
       调用 fab(5) 不会执行 fab 函数，而是返回一个 iterable 对象！在 for 循环执行时，每次循环都会执行 fab 函数内部的代码，执行到 yield b 时，
       fab 函数就返回一个迭代值，下次迭代时，代码从 yield b 的下一条语句继续执行，而函数的本地变量看起来和上次中断执行前是完全一样的，于是函数
       继续执行，直到再次遇到 yield
+send函数
+    def line_qw(delimiter=None):
+        print('Ready to split')
+        result=None
+        while 1:
+            line=yield result   #send('A,B,C') 直接赋值给line  'A,B,C'
+            result=line.split(delimiter)
+            print("result:",result)
+        
+print("send",s.send('A,B,C'))
+result: ['A', 'B', 'C']
+send ['A', 'B', 'C']
+
+s.send('e,d,c')
+result: ['e', 'd', 'c']
+Out[51]: ['e', 'd', 'c']
